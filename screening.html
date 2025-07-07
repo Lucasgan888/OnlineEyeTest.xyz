@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Vision Screening</title>
+  <style>
+    :root {
+      --primary-color: #002d62;
+      --secondary-color: #ffffff;
+      --accent-color: #0067b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    .screen {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .active {
+      display: flex;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .instructions {
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #e0e0e0;
+      margin-bottom: 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .progress {
+      height: 100%;
+      background: var(--accent-color);
+      width: 0%;
+      transition: width 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-bar">
+    <div id="progress" class="progress"></div>
+  </div>
+
+  <!-- Start Screen -->
+  <div class="screen active" id="startScreen">
+    <div class="title">Online Vision Screening Test</div>
+    <div class="instructions">
+      <p>This vision screening takes approximately 5–10 minutes to complete.</p>
+      <p>Please ensure you are in a well-lit room and your device is at arm's length from your eyes.</p>
+      <p>Follow the instructions carefully. Click the button below to begin.</p>
+    </div>
+    <button onclick="nextStep()">Start Test</button>
+  </div>
+
+  <!-- Calibration Screen -->
+  <div class="screen" id="calibrationScreen">
+    <div class="title">Screen Calibration</div>
+    <div class="instructions">
+      <p>Hold a credit card-sized item against the box below. Adjust your screen zoom until the item fits perfectly within the box.</p>
+      <div style="width: 85.6mm; height: 53.98mm; border: 2px dashed var(--primary-color); margin: 2rem auto;"></div>
+      <p>Ensure your device remains at arm's length.</p>
+    </div>
+    <button onclick="nextStep()">Continue</button>
+  </div>
+
+  <!-- Placeholder for Test Screens -->
+  <div class="screen" id="acuityTest">
+    <div class="title">Visual Acuity Test</div>
+    <div class="instructions">
+      <p>Identify the direction of the "E" symbol (Up, Down, Left, Right).</p>
+      <p>Progressively smaller letters will be shown. Select the correct orientation.</p>
+      <!-- Implement interactive visual acuity test here -->
+    </div>
+    <button onclick="nextStep()">Next</button>
+  </div>
+
+  <div class="screen" id="contrastTest">
+    <div class="title">Contrast Sensitivity Test</div>
+    <div class="instructions">
+      <p>Identify the tilt direction of striped patterns (left or right).</p>
+      <!-- Implement striped pattern here -->
+    </div>
+    <button onclick="nextStep()">Next</button>
+  </div>
+
+  <div class="screen" id="colorTest">
+    <div class="title">Color Vision Test</div>
+    <div class="instructions">
+      <p>Enter the number you see in each colored dot pattern.</p>
+      <!-- Implement Ishihara plates here -->
+    </div>
+    <button onclick="nextStep()">Next</button>
+  </div>
+
+  <div class="screen" id="astigmatismTest">
+    <div class="title">Astigmatism Test</div>
+    <div class="instructions">
+      <p>Look at the radial lines and select the direction that appears most blurry or most clear.</p>
+      <!-- Implement radial line image here -->
+    </div>
+    <button onclick="nextStep()">Next</button>
+  </div>
+
+  <div class="screen" id="fieldTest">
+    <div class="title">Visual Field Test</div>
+    <div class="instructions">
+      <p>Focus on the central dot and click whenever you see a flash appear in your peripheral vision.</p>
+      <!-- Implement field stimulus here -->
+    </div>
+    <button onclick="nextStep()">View Results</button>
+  </div>
+
+  <!-- Results Screen -->
+  <div class="screen" id="resultScreen">
+    <div class="title">Your Screening Results</div>
+    <div class="instructions">
+      <p>Thank you for completing the test.</p>
+      <p>Your results suggest:</p>
+      <ul style="text-align:left; max-width: 600px; margin: 1rem auto;">
+        <li>Visual Acuity: Normal</li>
+        <li>Contrast Sensitivity: Mild reduction</li>
+        <li>Color Vision: Normal</li>
+        <li>Astigmatism: No indication</li>
+        <li>Visual Field: Normal</li>
+      </ul>
+      <p>If you experience vision issues, we recommend scheduling a comprehensive eye exam with a licensed eye care professional.</p>
+    </div>
+  </div>
+
+  <script>
+    const screens = [
+      'startScreen',
+      'calibrationScreen',
+      'acuityTest',
+      'contrastTest',
+      'colorTest',
+      'astigmatismTest',
+      'fieldTest',
+      'resultScreen'
+    ];
+
+    let currentStep = 0;
+
+    function nextStep() {
+      document.getElementById(screens[currentStep]).classList.remove('active');
+      currentStep++;
+      if (currentStep < screens.length) {
+        document.getElementById(screens[currentStep]).classList.add('active');
+        updateProgress();
+      }
+    }
+
+    function updateProgress() {
+      const progress = document.getElementById('progress');
+      const percent = Math.floor((currentStep / (screens.length - 1)) * 100);
+      progress.style.width = percent + '%';
+    }
+  </script>
+</body>
+</html>
