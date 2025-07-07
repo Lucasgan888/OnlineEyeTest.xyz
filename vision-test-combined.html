@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Vision Screening Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .progress-bar {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 8px;
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .test-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            color: #333;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .test-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+            font-weight: 300;
+        }
+
+        .test-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .test-number {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .instructions {
+            text-align: left;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #2196F3;
+        }
+
+        .instructions h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .instructions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .instructions li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .instructions li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #2196F3, #1e3c72);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 0.5rem;
+            min-width: 150px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(33, 150, 243, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        /* Calibration specific styles */
+        .calibration-card {
+            border: 2px solid #333;
+            width: 85.6mm;
+            height: 53.98mm;
+            background: #fff;
+            border-radius: 5px;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #333;
+            position: relative;
+        }
+
+        /* Acuity test specific styles */
+        .letter-e {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #000;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin: 2rem 0;
+        }
+
+        .direction-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 300px;
+            margin: 2rem auto;
+        }
+
+        .direction-btn {
+            padding: 1rem;
+            border: 2px solid #2196F3;
+            background: white;
+            color: #2196F3;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .direction-btn:hover {
+            background: #2196F3;
+            color: white;
+        }
+
+        .test-info {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Results specific styles */
+        .result-section {
+            text-align: left;
+            margin: 2rem 0;
+        }
+
+        .result-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border-left: 4px solid #2196F3;
+            position: relative;
+        }
+
+        .result-good {
+            border-left-color: #4CAF50;
+            background: linear-gradient(90deg, rgba(76, 175, 80, 0.1), #f8f9fa);
+        }
+
+        .result-attention {
+            border-left-color: #ff9800;
+            background: linear-gradient(90deg, rgba(255, 152, 0, 0.1), #f8f9fa);
+        }
+
+        .result-concern {
+            border-left-color: #f44336;
+            background: linear-gradient(90deg, rgba(244, 67, 54, 0.1), #f8f9fa);
+        }
+
+        .result-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .result-score {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-description {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .overall-score {
+            background: linear-gradient(45deg, #1e3c72, #2196F3);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .overall-score h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .overall-score .score {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        @media print {
+            body { background: white; color: black; }
+            .header { display: none; }
+            .navigation-buttons { display: none; }
+            .test-section { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">OnlineEyeTest.xyz</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Ready to start</div>
+        </div>
+
+        <div class="main-content">
+            <!-- Welcome Screen -->
+            <div class="test-section fade-in" id="welcomeScreen">
+                <h1 class="test-title">Online Vision Screening Test</h1>
+                <p class="test-subtitle">Comprehensive eye health assessment in 5-10 minutes</p>
+                
+                <div class="instructions">
+                    <h3>Before you begin:</h3>
+                    <ul>
+                        <li>Position your device at arm's length (about 60cm away)</li>
+                        <li>Ensure good lighting - avoid glare on your screen</li>
+                        <li>Remove glasses or contact lenses unless specified</li>
+                        <li>Sit comfortably with both eyes open</li>
+                        <li>This test cannot replace professional eye examination</li>
+                    </ul>
+                </div>
+                
+                <button class="btn" onclick="startTest()">Start Vision Test</button>
+            </div>
+
+            <!-- Screen Calibration -->
+            <div class="test-section hidden" id="calibrationScreen">
+                <h2 class="test-title">Screen Calibration</h2>
+                <p class="test-subtitle">Adjust your viewing distance for accurate results</p>
+                
+                <div class="instructions">
+                    <h3>Calibration Instructions:</h3>
+                    <ul>
+                        <li>Hold a credit card against your screen</li>
+                        <li>The card should match the size of the rectangle below</li>
+                        <li>Adjust your distance until they match perfectly</li>
+                        <li>This ensures proper test scaling</li>
+                    </ul>
+                </div>
+                
+                <div class="calibration-card">
+                    <div>Credit Card Size<br>85.6mm × 53.98mm</div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn btn-secondary" onclick="goToWelcome()">Back</button>
+                    <button class="btn" onclick="goToAcuityTest()">Calibration Complete</button>
+                </div>
+            </div>
+
+            <!-- Visual Acuity Test -->
+            <div class="test-section hidden" id="acuityTest">
+                <div class="test-number">Test 1 of 2: Visual Acuity</div>
+                <h2 class="test-title">Visual Acuity Test</h2>
+                <p class="test-subtitle">Identify the direction of the letter E opening</p>
+                
+                <div id="letterDisplay">
+                    <div class="letter-e" id="testLetter" style="font-size: 120px;">E</div>
+                </div>
+                
+                <div class="direction-buttons">
+                    <button class="direction-btn" onclick="selectDirection('up')">↑ Up</button>
+                    <button class="direction-btn" onclick="selectDirection('down')">↓ Down</button>
+                    <button class="direction-btn" onclick="selectDirection('left')">← Left</button>
+                    <button class="direction-btn" onclick="selectDirection('right')">→ Right</button>
+                </div>
+                
+                <div class="test-info">
+                    <div id="acuityLevel">Level: 1/8</div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="btn btn-secondary" onclick="goToCalibration()">Back</button>
+                    <button class="btn" onclick="skipAcuityTest()">Skip Test</button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div class="test-section hidden" id="resultsScreen">
+                <h2 class="test-title">Vision Screening Results</h2>
+                <p class="test-subtitle">Your comprehensive vision assessment</p>
+                
+                <div class="overall-score" id="overallScore">
+                    <h3>Overall Score</h3>
+                    <div class="score" id="totalScore">--</div>
+                    <p id="overallStatus">Calculating results...</p>
+                </div>
+                
+                <div class="result-section" id="resultsContent">
+                    <!-- Results will be populated here -->
+                </div>
+                
+                <div class="instructions">
+                    <h3>Important Notice:</h3>
+                    <ul>
+                        <li>This screening is not a substitute for professional eye examination</li>
+                        <li>Results are indicative only and should not be used for diagnosis</li>
+                        <li>Consult an eye care professional for comprehensive evaluation</li>
+                        <li>Regular eye exams are recommended for optimal eye health</li>
+                    </ul>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn" onclick="restartTest()">Take Test Again</button>
+                    <button class="btn btn-secondary" onclick="printResults()">Print Results</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 0; // 0=welcome, 1=calibration, 2=acuity, 3=results
+        let testResults = {
+            acuity: { correct: 0, total: 0, level: 0 }
+        };
+
+        // Acuity test variables
+        let currentAcuityLevel = 1;
+        let currentAcuityDirection = '';
+        const acuityDirections = ['up', 'down', 'left', 'right'];
+        const acuitySizes = [120, 100, 80, 60, 45, 35, 25, 18];
+
+        // Navigation functions
+        function hideAllScreens() {
+            const screens = ['welcomeScreen', 'calibrationScreen', 'acuityTest', 'resultsScreen'];
+            screens.forEach(screen => {
+                document.getElementById(screen).classList.add('hidden');
+            });
+        }
+
+        function showScreen(screenId) {
+            hideAllScreens();
+            document.getElementById(screenId).classList.remove('hidden');
+            document.getElementById(screenId).classList.add('fade-in');
+        }
+
+        function updateProgress() {
+            const progressSteps = ['Ready to start', 'Screen Calibration', 'Visual Acuity Test', 'Results'];
+            const progressPercent = [0, 25, 75, 100];
+            
+            document.getElementById('progressFill').style.width = progressPercent[currentStep] + '%';
+            document.getElementById('progressText').textContent = progressSteps[currentStep];
+        }
+
+        // Step navigation
+        function startTest() {
+            currentStep = 1;
+            initializeTestData();
+            showScreen('calibrationScreen');
+            updateProgress();
+        }
+
+        function goToWelcome() {
+            currentStep = 0;
+            showScreen('welcomeScreen');
+            updateProgress();
+        }
+
+        function goToCalibration() {
+            currentStep = 1;
+            showScreen('calibrationScreen');
+            updateProgress();
+        }
+
+        function goToAcuityTest() {
+            currentStep = 2;
+            showScreen('acuityTest');
+            generateAcuityLetter();
+            updateProgress();
+        }
+
+        function goToResults() {
+            currentStep = 3;
+            showScreen('resultsScreen');
+            generateResults();
+            updateProgress();
+        }
+
+        // Initialize test data
+        function initializeTestData() {
+            testResults = {
+                acuity: { correct: 0, total: 0, level: 0 }
+            };
+        }
+
+        // Acuity test functions
+        function generateAcuityLetter() {
+            currentAcuityDirection = acuityDirections[Math.floor(Math.random() * acuityDirections.length)];
+            const letter = document.getElementById('testLetter');
+            letter.style.fontSize = acuitySizes[currentAcuityLevel - 1] + 'px';
+            
+            let rotation = 0;
+            switch(currentAcuityDirection) {
+                case 'up': rotation = -90; break;
+                case 'down': rotation = 90; break;
+                case 'left': rotation = 180; break;
+                case 'right': rotation = 0; break;
+            }
+            letter.style.transform = `rotate(${rotation}deg)`;
+            
+            document.getElementById('acuityLevel').textContent = `Level: ${currentAcuityLevel}/8`;
+        }
+
+        function selectDirection(direction) {
+            testResults.acuity.total++;
+            if (direction === currentAcuityDirection) {
+                testResults.acuity.correct++;
+                testResults.acuity.level = currentAcuityLevel;
+            }
+            
+            currentAcuityLevel++;
+            if (currentAcuityLevel > 8) {
+                goToResults();
+            } else {
+                generateAcuityLetter();
+            }
+        }
+
+        function skipAcuityTest() {
+            goToResults();
+        }
+
+        // Results functions
+        function generateResults() {
+            const resultsContent = document.getElementById('resultsContent');
+            resultsContent.innerHTML = '';
+            
+            let totalScore = 0;
+            let testCount = 0;
+
+            // Visual acuity results
+            if (testResults.acuity.total > 0) {
+                const acuityScore = (testResults.acuity.correct / testResults.acuity.total) * 100;
+                const acuityClass = acuityScore >= 80 ? 'result-good' : acuityScore >= 60 ? 'result-attention' : 'result-concern';
+                
+                const acuityResult = createResultItem(
+                    'Visual Acuity',
+                    `${acuityScore.toFixed(1)}% (${testResults.acuity.correct}/${testResults.acuity.total})`,
+                    getAcuityDescription(acuityScore, testResults.acuity.level),
+                    acuityClass
+                );
+                resultsContent.appendChild(acuityResult);
+                
+                totalScore += acuityScore;
+                testCount++;
+            }
+
+            // Calculate overall score
+            const overallScore = testCount > 0 ? totalScore / testCount : 0;
+            updateOverallScore(overallScore);
+        }
+
+        function createResultItem(title, score, description, className) {
+            const item = document.createElement('div');
+            item.className = `result-item ${className}`;
+            item.innerHTML = `
+                <div class="result-title">${title}</div>
+                <div class="result-score">Score: ${score}</div>
+                <div class="result-description">${description}</div>
+            `;
+            return item;
+        }
+
+        function updateOverallScore(score) {
+            document.getElementById('totalScore').textContent = score.toFixed(0);
+            
+            let status = '';
+            if (score >= 80) {
+                status = 'Excellent - Your vision is in good condition';
+            } else if (score >= 60) {
+                status = 'Good - Some areas may need attention';
+            } else {
+                status = 'Needs attention - Consider consulting an eye doctor';
+            }
+            
+            document.getElementById('overallStatus').textContent = status;
+        }
+
+        function getAcuityDescription(score, level) {
+            if (score >= 80) {
+                return `Your visual acuity is excellent. You can clearly identify letters at level ${level}. This indicates good distance vision.`;
+            } else if (score >= 60) {
+                return `Your visual acuity is moderate. Consider eye care attention and possibly vision correction if needed.`;
+            } else {
+                return `Your visual acuity test results are below average. We recommend consulting an eye care professional for a detailed examination.`;
+            }
+        }
+
+        function restartTest() {
+            currentStep = 0;
+            currentAcuityLevel = 1;
+            initializeTestData();
+            showScreen('welcomeScreen');
+            updateProgress();
+        }
+
+        function printResults() {
+            window.print();
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            updateProgress();
+        };
+    </script>
+</body>
+</html> 
