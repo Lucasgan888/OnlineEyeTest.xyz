@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9CZZNHNTV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H9CZZNHNTV');
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👁</text></svg>">
+    
     <title>Online Eye Test – Professional Vision Assessment | Free Eye Test</title>
     <meta name="description" content="Take our professional Online Eye Test for free. Accurate vision assessment with instant results. Test your eyesight at home with our scientifically validated Eye Test tool.">
     <meta name="keywords" content="online eye test, vision test, visual acuity test, eye exam, vision screening, eyesight test, free eye test, vision assessment, eye health check, snellen chart">
@@ -1297,6 +1312,12 @@
 
     <script>
         function startEyeTest() {
+            // Google Analytics事件追踪
+            gtag('event', 'test_started', {
+                'event_category': 'engagement',
+                'event_label': 'eye_test_initiated'
+            });
+            
             const homepage = document.getElementById('homepage');
             const testApp = document.getElementById('testApp');
             
@@ -1444,6 +1465,12 @@
         }
 
         function selectStartingEye(eye) {
+            // Google Analytics事件追踪
+            gtag('event', 'eye_selection', {
+                'event_category': 'engagement',
+                'event_label': eye + '_eye_selected'
+            });
+            
             currentEye = eye;
             firstEye = eye;
             currentStep = 3;
@@ -1557,6 +1584,13 @@
         }
 
         function showResults() {
+            // Google Analytics事件追踪
+            gtag('event', 'test_completed', {
+                'event_category': 'engagement',
+                'event_label': 'eye_test_finished',
+                'value': Math.round((testResults.right.correct + testResults.left.correct) / (testResults.right.total + testResults.left.total) * 100)
+            });
+            
             currentStep = 4;
             calculateResults();
             showScreen('resultsScreen');

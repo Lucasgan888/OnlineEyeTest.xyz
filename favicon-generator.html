@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Generator</title>
+</head>
+<body>
+    <canvas id="canvas" width="32" height="32"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // 创建渐变
+        const gradient = ctx.createLinearGradient(0, 0, 32, 32);
+        gradient.addColorStop(0, '#2563eb');
+        gradient.addColorStop(1, '#1e40af');
+        
+        // 绘制眼睛外轮廓
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.ellipse(16, 16, 14, 8, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // 绘制眼睛内部白色部分
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.ellipse(16, 16, 11, 6, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // 绘制虹膜
+        ctx.fillStyle = '#2563eb';
+        ctx.beginPath();
+        ctx.arc(16, 16, 4, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // 绘制瞳孔
+        ctx.fillStyle = '#1f2937';
+        ctx.beginPath();
+        ctx.arc(16, 16, 2, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // 绘制高光
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.beginPath();
+        ctx.arc(17, 15, 1, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // 导出为数据URL
+        console.log('Favicon data URL:', canvas.toDataURL());
+    </script>
+</body>
+</html>
