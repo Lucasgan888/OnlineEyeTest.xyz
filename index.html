@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Eye Test - Free Vision Screening & Visual Acuity Assessment | Professional Eye Exam</title>
-    <meta name="description" content="Take a comprehensive online eye test to assess your visual acuity and eye health. Professional vision screening with instant results, detailed scoring, and expert guidance. Test your eyesight from home safely and accurately.">
+    <title>Online Eye Test – Professional Vision Assessment | Free Eye Test</title>
+    <meta name="description" content="Take our professional Online Eye Test for free. Accurate vision assessment with instant results. Test your eyesight at home with our scientifically validated Eye Test tool.">
     <meta name="keywords" content="online eye test, vision test, visual acuity test, eye exam, vision screening, eyesight test, free eye test, vision assessment, eye health check, snellen chart">
     <meta name="robots" content="index, follow">
     
@@ -208,15 +208,16 @@
 
         .btn {
             display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 50px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
-            font-size: 1.1rem;
-            margin: 0.5rem;
+            font-size: 0.9rem;
+            margin: 0.2rem;
+            box-sizing: border-box;
         }
 
         .btn-primary {
@@ -455,34 +456,38 @@
 
         .test-card {
             background: white;
-            border-radius: 20px;
-            padding: 2rem;
+            border-radius: 15px;
+            padding: 1rem 1rem 0.8rem 1rem;
             box-shadow: var(--shadow-medium);
             text-align: center;
-            margin-bottom: 2rem;
-            max-height: 90vh;
-            overflow-y: auto;
+            margin-bottom: 0.5rem;
+            height: 75vh;
+            overflow: hidden;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
         }
 
         .test-title {
-            font-size: 2.5rem;
+            font-size: 1.6rem;
             color: var(--primary-blue);
-            margin-bottom: 1rem;
+            margin-bottom: 0.3rem;
             font-weight: 300;
         }
 
         .test-subtitle {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--text-gray);
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
         }
 
         .instructions {
             background: var(--bg-light);
             border-radius: 15px;
-            padding: 1.5rem;
-            margin: 2rem 0;
+            padding: 1rem;
+            margin: 1rem 0;
             text-align: left;
         }
 
@@ -513,24 +518,32 @@
         .eye-indicator {
             background: var(--gradient-secondary);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.3rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 1rem;
             font-weight: bold;
-            margin: 2rem auto;
+            margin: 0.5rem auto;
             display: inline-block;
-            min-width: 200px;
-            position: relative;
-            overflow: hidden;
+            min-width: 150px;
         }
 
         .eye-cover-instruction {
             background: #fef3c7;
-            border: 2px solid var(--accent-orange);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 2rem 0;
+            border: 1px solid var(--accent-orange);
+            border-radius: 8px;
+            padding: 0.4rem;
+            margin: 0.3rem 0;
             color: #92400e;
+        }
+
+        .eye-cover-instruction h3 {
+            margin-bottom: 0.2rem;
+            font-size: 0.9rem;
+        }
+
+        .eye-cover-instruction p {
+            margin: 0;
+            font-size: 0.8rem;
         }
 
         .eye-cover-instruction h3 {
@@ -542,11 +555,10 @@
         .vision-chart {
             background: var(--bg-light);
             border: 2px solid var(--border-gray);
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 1rem 0;
-            min-height: 200px;
-            max-height: 300px;
+            border-radius: 10px;
+            padding: 0.8rem;
+            margin: 0.3rem 0;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -564,18 +576,18 @@
         .direction-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.8rem;
-            max-width: 320px;
-            margin: 1rem auto;
+            gap: 0.4rem;
+            max-width: 250px;
+            margin: 0.3rem auto;
         }
 
         .direction-btn {
             background: white;
             border: 2px solid var(--primary-blue);
             color: var(--primary-blue);
-            padding: 1rem;
-            border-radius: 12px;
-            font-size: 1rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
@@ -590,18 +602,40 @@
 
         .test-info {
             background: var(--bg-light);
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
+            border-radius: 8px;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
             color: var(--text-gray);
+            font-size: 0.9rem;
         }
 
         .navigation-buttons {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
+            gap: 0.8rem;
+            padding: 0.5rem 0;
+            flex-wrap: nowrap;
+            width: 100%;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .navigation-buttons .btn {
+            flex: 1;
+            max-width: 100px;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.8rem;
+            margin: 0;
+            white-space: nowrap;
+            border-radius: 15px;
+        }
+
+        .test-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
         }
 
         .eye-test-summary {
@@ -722,7 +756,7 @@
             <div class="container">
                 <div class="hero-content">
                     <h1>Professional Online Eye Test</h1>
-                    <p class="hero-subtitle">Comprehensive vision screening and visual acuity assessment from the comfort of your home. Get instant results with our scientifically validated eye examination tool.</p>
+                    <p class="hero-subtitle">Take our free Online Eye Test for accurate vision assessment. Professional Eye Test with instant results - test your vision at home safely.</p>
                     
                     <div class="hero-features">
                         <div class="hero-feature">Free & Instant Results</div>
@@ -732,7 +766,7 @@
                     </div>
                     
                     <div style="margin-top: 3rem;">
-                        <button class="btn btn-primary" onclick="startEyeTest()">Start Your Eye Test Now</button>
+                        <button class="btn btn-primary" onclick="startEyeTest()">Start Online Eye Test Now</button>
                         <a href="#how-it-works" class="btn btn-secondary">Learn How It Works</a>
                     </div>
                 </div>
@@ -743,44 +777,44 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Why Choose Our Online Eye Test?</h2>
-                    <p class="section-subtitle">Professional-grade vision screening technology that delivers accurate results you can trust</p>
+                    <p class="section-subtitle">Our Online Eye Test uses professional-grade technology for accurate vision screening you can trust</p>
                 </div>
                 
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">🎯</div>
                         <h3 class="feature-title">Scientifically Accurate</h3>
-                        <p class="feature-description">Based on standardized Snellen chart methodology used by eye care professionals worldwide. Our test follows established vision screening protocols for reliable results.</p>
+                        <p class="feature-description">Our Online Eye Test uses standardized Snellen chart methodology. Professional-grade vision screening with reliable results.</p>
                     </div>
                     
                     <div class="feature-card">
                         <div class="feature-icon">👁</div>
                         <h3 class="feature-title">Individual Eye Assessment</h3>
-                        <p class="feature-description">Test each eye separately with 8 progressive difficulty levels. Detect potential vision differences between eyes that might require professional attention.</p>
+                        <p class="feature-description">Our vision screening evaluates each eye separately with 8 difficulty levels. Comprehensive Online Eye Test for accurate assessment.</p>
                     </div>
                     
                     <div class="feature-card">
                         <div class="feature-icon">📱</div>
                         <h3 class="feature-title">Device Calibrated</h3>
-                        <p class="feature-description">Smart calibration system adjusts for your screen size and viewing distance, ensuring consistent and accurate measurements across all devices.</p>
+                        <p class="feature-description">Smart calibration ensures accurate Online Eye Test results across all devices and screen sizes.</p>
                     </div>
                     
                     <div class="feature-card">
                         <div class="feature-icon">⚡</div>
                         <h3 class="feature-title">Instant Results</h3>
-                        <p class="feature-description">Get immediate detailed analysis of your visual acuity with personalized recommendations and clear explanations of your vision health status.</p>
+                        <p class="feature-description">Get immediate vision screening results with detailed visual acuity analysis and personalized recommendations.</p>
                     </div>
                     
                     <div class="feature-card">
                         <div class="feature-icon">🔒</div>
                         <h3 class="feature-title">Privacy Protected</h3>
-                        <p class="feature-description">No personal information required. Your test results remain completely private and are not stored or shared with any third parties.</p>
+                        <p class="feature-description">Your Online Eye Test results remain completely private. No personal information required for our vision screening.</p>
                     </div>
                     
                     <div class="feature-card">
                         <div class="feature-icon">🌍</div>
                         <h3 class="feature-title">Accessible Anywhere</h3>
-                        <p class="feature-description">Take your eye test anytime, anywhere. Compatible with computers, tablets, and smartphones for convenient vision screening on-the-go.</p>
+                        <p class="feature-description">Take our Online Eye Test anytime, anywhere. Compatible with all devices for convenient vision screening access.</p>
                     </div>
                 </div>
             </div>
@@ -790,44 +824,44 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">How Our Online Eye Test Works</h2>
-                    <p class="section-subtitle">Simple, step-by-step process designed for accuracy and ease of use</p>
+                    <p class="section-subtitle">Simple 6-step process for professional Online Eye Test results</p>
                 </div>
                 
                 <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-number">1</div>
                         <h3>Screen Calibration</h3>
-                        <p>Use a standard credit card to calibrate your screen size, ensuring accurate letter sizing for precise visual acuity measurement across different devices and screen sizes.</p>
+                        <p>Use a credit card to calibrate your Online Eye Test screen size for accurate measurements.</p>
                     </div>
                     
                     <div class="step-card">
                         <div class="step-number">2</div>
                         <h3>Environment Setup</h3>
-                        <p>Position yourself 60cm from your screen in good lighting. Remove glasses unless you normally wear them, and ensure no glare on your screen for optimal testing conditions.</p>
+                        <p>Position yourself 60cm from screen in good lighting. Optimal conditions ensure accurate Online Eye Test results.</p>
                     </div>
                     
                     <div class="step-card">
                         <div class="step-number">3</div>
                         <h3>Choose Starting Eye</h3>
-                        <p>Select which eye you'd like to test first. You'll cover the other eye completely while testing, ensuring individual assessment of each eye's visual performance.</p>
+                        <p>Select which eye to test first. Our Online Eye Test evaluates each eye individually for comprehensive assessment.</p>
                     </div>
                     
                     <div class="step-card">
                         <div class="step-number">4</div>
                         <h3>Letter Direction Test</h3>
-                        <p>Identify the direction of the letter "E" as it appears in 8 progressively smaller sizes. Each level represents different visual acuity measurements from 20/200 to 20/20.</p>
+                        <p>Identify the "E" letter direction in 8 progressively smaller sizes. Each level represents different visual acuity in our Online Eye Test.</p>
                     </div>
                     
                     <div class="step-card">
                         <div class="step-number">5</div>
                         <h3>Switch Eyes</h3>
-                        <p>After completing all levels with your first eye, switch to test your second eye using the same 8-level progression to ensure comprehensive bilateral assessment.</p>
+                        <p>After completing your first eye, switch to test the second eye using the same Online Eye Test progression for comprehensive assessment.</p>
                     </div>
                     
                     <div class="step-card">
                         <div class="step-number">6</div>
                         <h3>Receive Results</h3>
-                        <p>Get instant analysis showing accuracy percentage, level reached for each eye, and overall vision assessment with professional recommendations for next steps.</p>
+                        <p>Get instant vision analysis with accuracy percentage, level reached, and professional recommendations from your Online Eye Test.</p>
                     </div>
                 </div>
             </div>
@@ -836,44 +870,41 @@
         <section class="section bg-white" id="test-rules">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Online Eye Test Rules & Guidelines</h2>
-                    <p class="section-subtitle">Follow these important guidelines to ensure accurate and reliable vision screening results</p>
+                    <h2 class="section-title">Online Eye Test Guidelines</h2>
+                    <p class="section-subtitle">Follow these guidelines for accurate Eye Test results</p>
                 </div>
                 
                 <div class="rules-grid">
                     <div class="rule-card">
                         <div class="rule-icon">📏</div>
                         <h3>Proper Distance</h3>
-                        <p><strong>Maintain 60cm (arm's length) from screen</strong></p>
+                        <p><strong>Maintain 60cm from screen for accurate Online Eye Test</strong></p>
                         <ul style="margin-top: 1rem; color: var(--text-gray);">
-                            <li>Use the credit card calibration feature</li>
+                            <li>Use credit card calibration</li>
                             <li>Sit upright with good posture</li>
-                            <li>Keep your head level and straight</li>
-                            <li>Avoid leaning forward or backward</li>
+                            <li>Keep head level during Eye Test</li>
                         </ul>
                     </div>
                     
                     <div class="rule-card">
                         <div class="rule-icon">💡</div>
                         <h3>Lighting Conditions</h3>
-                        <p><strong>Ensure optimal lighting environment</strong></p>
+                        <p><strong>Ensure optimal lighting for Online Eye Test</strong></p>
                         <ul style="margin-top: 1rem; color: var(--text-gray);">
                             <li>Use bright, even room lighting</li>
-                            <li>Avoid screen glare and reflections</li>
+                            <li>Avoid screen glare during Eye Test</li>
                             <li>Set screen brightness to maximum</li>
-                            <li>Face away from windows or light sources</li>
                         </ul>
                     </div>
                     
                     <div class="rule-card">
                         <div class="rule-icon">👁</div>
                         <h3>Eye Covering Technique</h3>
-                        <p><strong>Properly cover the non-testing eye</strong></p>
+                        <p><strong>Properly cover non-testing eye during Online Eye Test</strong></p>
                         <ul style="margin-top: 1rem; color: var(--text-gray);">
-                            <li>Use your hand or a piece of paper</li>
-                            <li>Cover completely without pressing on the eye</li>
-                            <li>Keep the testing eye open and focused</li>
-                            <li>Don't peek with the covered eye</li>
+                            <li>Use hand or paper to cover eye</li>
+                            <li>Cover completely without pressing</li>
+                            <li>Keep testing eye focused during Eye Test</li>
                         </ul>
                     </div>
                     
@@ -1031,78 +1062,38 @@
         <section class="section bg-white" id="faq">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Frequently Asked Questions</h2>
-                    <p class="section-subtitle">Get answers to common questions about our online eye test</p>
+                    <h2 class="section-title">Online Eye Test FAQ</h2>
+                    <p class="section-subtitle">Common questions about our Online Eye Test</p>
                 </div>
                 
                 <div style="max-width: 800px; margin: 0 auto;">
                     <div class="faq-item">
                         <button class="faq-question" onclick="toggleFaq(this)">
-                            How accurate is this online eye test?
+                            How accurate is our Online Eye Test?
                             <span>+</span>
                         </button>
                         <div class="faq-answer">
-                            Our online eye test uses scientifically validated methods based on the Snellen chart, the same standard used by eye care professionals. While highly accurate for basic visual acuity screening, it should supplement, not replace, comprehensive professional eye examinations.
+                            Our Online Eye Test uses scientifically validated Snellen chart methods. This Eye Test provides accurate visual acuity screening for basic vision assessment.
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <button class="faq-question" onclick="toggleFaq(this)">
-                            Can this test detect eye diseases?
+                            Should I wear glasses during the Eye Test?
                             <span>+</span>
                         </button>
                         <div class="faq-answer">
-                            No, this test only measures visual acuity (how clearly you can see). It cannot detect eye diseases like glaucoma, cataracts, macular degeneration, or other eye conditions. Regular professional eye exams are essential for comprehensive eye health monitoring.
+                            Wear your normal glasses or contacts during the Online Eye Test to assess corrected vision. You can also take the vision screening without correction.
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <button class="faq-question" onclick="toggleFaq(this)">
-                            Should I wear my glasses during the test?
+                            Is my Online Eye Test data secure?
                             <span>+</span>
                         </button>
                         <div class="faq-answer">
-                            If you normally wear glasses or contact lenses, wear them during the test to assess your corrected vision. You can also take the test without correction to measure your natural visual acuity. Both results can be valuable for understanding your vision status.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            How often should I take this eye test?
-                            <span>+</span>
-                        </button>
-                        <div class="faq-answer">
-                            You can use this screening tool as often as you like for monitoring changes in your vision. However, professional eye exams are recommended annually for adults over 40, every 2 years for adults 18-39, and as recommended by your eye care provider.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            What if my results show poor vision?
-                            <span>+</span>
-                        </button>
-                        <div class="faq-answer">
-                            If your results indicate below-normal visual acuity, we recommend scheduling an appointment with an optometrist or ophthalmologist for a comprehensive eye examination. They can determine if you need vision correction or if there are underlying eye health issues requiring attention.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            Is my test data private and secure?
-                            <span>+</span>
-                        </button>
-                        <div class="faq-answer">
-                            Yes, absolutely. We do not collect, store, or share any personal information or test results. All testing is performed locally in your browser, and no data is transmitted to our servers. Your privacy and confidentiality are completely protected.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            What devices can I use for the test?
-                            <span>+</span>
-                        </button>
-                        <div class="faq-answer">
-                            The test works on computers, tablets, and smartphones with modern web browsers. For best results, we recommend using a device with a screen size of at least 10 inches and ensuring good lighting conditions. The calibration feature adjusts for different screen sizes.
+                            Yes, our vision screening is completely private. No personal data is collected or stored during your Online Eye Test session.
                         </div>
                     </div>
                 </div>
@@ -1112,44 +1103,43 @@
         <section class="section bg-light">
             <div class="container">
                 <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: var(--text-dark); margin-bottom: 1rem;">Ready to Test Your Vision?</h2>
-                    <p style="font-size: 1.2rem; color: var(--text-gray); margin-bottom: 2rem;">Take control of your eye health with our professional-grade online vision screening. Quick, accurate, and completely free.</p>
-                    <button class="btn btn-primary" onclick="startEyeTest()" style="font-size: 1.2rem; padding: 1.2rem 3rem;">Start Your Free Eye Test</button>
-                    <p style="margin-top: 1rem; color: var(--text-gray); font-size: 0.9rem;">✓ No registration required  ✓ Instant results  ✓ Completely private</p>
+                    <h2 style="color: var(--text-dark); margin-bottom: 1rem;">Ready for Your Online Eye Test?</h2>
+                    <p style="font-size: 1.2rem; color: var(--text-gray); margin-bottom: 2rem;">Take our professional Online Eye Test now. Free, accurate vision screening with instant results.</p>
+                    <button class="btn btn-primary" onclick="startEyeTest()" style="font-size: 1.2rem; padding: 1.2rem 3rem;">Start Your Online Eye Test</button>
+                    <p style="margin-top: 1rem; color: var(--text-gray); font-size: 0.9rem;">✓ No registration required  ✓ Instant vision test results  ✓ Completely private</p>
                 </div>
             </div>
         </section>
     </div>
 
     <div class="test-app" id="testApp">
-        <div style="background: var(--gradient-secondary); color: white; padding: 1rem 0; box-shadow: var(--shadow-soft);">
-            <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center;">
-                <div style="font-size: 1.8rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem;">
+        <div style="background: var(--gradient-secondary); color: white; padding: 0.5rem 0; box-shadow: var(--shadow-soft);">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-size: 1.4rem; font-weight: bold; display: flex; align-items: center; gap: 0.3rem;">
                     <span>👁</span> Online Eye Test
                 </div>
-                <div style="flex: 1; max-width: 400px; margin: 0 2rem;">
-                    <div style="background: rgba(255, 255, 255, 0.2); border-radius: 10px; overflow: hidden; height: 8px;">
+                <div style="flex: 1; max-width: 300px; margin: 0 1rem;">
+                    <div style="background: rgba(255, 255, 255, 0.2); border-radius: 8px; overflow: hidden; height: 6px;">
                         <div style="height: 100%; background: linear-gradient(90deg, #10b981, #34d399); width: 0%; transition: width 0.5s ease;" id="progressFill"></div>
                     </div>
-                    <div style="font-size: 0.9rem; margin-top: 0.5rem; text-align: center;" id="progressText">Ready to start</div>
+                    <div style="font-size: 0.8rem; margin-top: 0.2rem; text-align: center;" id="progressText">Ready to start</div>
                 </div>
-                <button class="btn btn-secondary" onclick="goBackToHome()">← Back to Home</button>
+                <button class="btn btn-secondary" onclick="goBackToHome()" style="padding: 0.5rem 1rem; font-size: 0.9rem;">← Back</button>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" style="padding: 0.5rem 1rem;">
             <div class="test-card fade-in" id="welcomeScreen">
                 <h1 class="test-title">Online Eye Test</h1>
-                <p class="test-subtitle">Comprehensive eye health assessment with individual eye testing</p>
+                <p class="test-subtitle">Professional eye health assessment</p>
                 
                 <div class="instructions">
                     <h3>Before you begin:</h3>
                     <ul>
-                        <li>Position yourself 60cm (arm's length) from your screen</li>
-                        <li>Ensure bright, even lighting without screen glare</li>
-                        <li>You will test each eye individually</li>
-                        <li>Follow instructions for covering each eye</li>
-                        <li>This test supplements but cannot replace professional eye examination</li>
+                        <li>Position yourself 60cm from screen</li>
+                        <li>Ensure bright lighting without glare</li>
+                        <li>Test each eye individually</li>
+                        <li>Follow eye covering instructions</li>
                     </ul>
                 </div>
                 
@@ -1157,92 +1147,96 @@
             </div>
 
             <div class="test-card hidden" id="calibrationScreen">
-                <h2 class="test-title">Screen Calibration</h2>
-                <p class="test-subtitle">Ensure accurate test results by calibrating your viewing distance</p>
-                
-                <div class="instructions">
-                    <h3>Calibration Instructions:</h3>
-                    <ul>
-                        <li>Hold a credit card against your screen</li>
-                        <li>Adjust your distance until the card matches the rectangle below exactly</li>
-                        <li>This ensures proper scaling for accurate vision testing</li>
-                    </ul>
-                </div>
-                
-                <div style="border: 2px solid var(--primary-blue); background: #f0f9ff; margin: 2rem auto; width: 300px; height: 190px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary-blue);">
-                    Credit Card Size<br>85.6mm × 53.98mm
+                <div class="test-content">
+                    <h2 class="test-title">Screen Calibration</h2>
+                    <p class="test-subtitle">Calibrate viewing distance for accurate results</p>
+                    
+                    <div class="instructions">
+                        <h3>Instructions:</h3>
+                        <ul>
+                            <li>Hold a credit card against your screen</li>
+                            <li>Adjust distance until card matches rectangle below</li>
+                            <li>This ensures proper test scaling</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="border: 2px solid var(--primary-blue); background: #f0f9ff; margin: 1rem auto; width: 260px; height: 150px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary-blue); font-size: 0.9rem;">
+                        Credit Card Size<br>85.6mm × 53.98mm
+                    </div>
                 </div>
                 
                 <div class="navigation-buttons">
                     <button class="btn btn-secondary" onclick="goToWelcome()">Back</button>
-                    <button class="btn" onclick="goToEyeSelection()">Calibration Complete</button>
+                    <button class="btn" onclick="goToEyeSelection()">Complete</button>
                 </div>
             </div>
 
             <div class="test-card hidden" id="eyeSelectionScreen">
-                <h2 class="test-title">Choose Starting Eye</h2>
-                <p class="test-subtitle">Select which eye you would like to test first</p>
-                
-                <div class="instructions">
-                    <h3>Testing Process:</h3>
-                    <ul>
-                        <li>You will test each eye separately with 8 levels of difficulty</li>
-                        <li>Choose your preferred starting eye</li>
-                        <li>After completing 8 levels, you'll test the other eye</li>
-                        <li>Results will show individual performance for each eye</li>
-                    </ul>
-                </div>
-                
-                <div style="display: flex; gap: 2rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap;">
-                    <div style="text-align: center;">
-                        <button class="btn" style="min-width: 200px; font-size: 1.3rem; padding: 1.5rem 2rem;" onclick="selectStartingEye('right')">
-                            👁 Start with Right Eye
-                        </button>
-                        <p style="margin-top: 1rem; color: var(--text-gray);">Cover left eye first</p>
+                <div class="test-content">
+                    <h2 class="test-title">Choose Starting Eye</h2>
+                    <p class="test-subtitle">Select which eye to test first</p>
+                    
+                    <div class="instructions">
+                        <h3>Testing Process:</h3>
+                        <ul>
+                            <li>Test each eye separately with 8 difficulty levels</li>
+                            <li>Choose your preferred starting eye</li>
+                            <li>Results show individual performance for each eye</li>
+                        </ul>
                     </div>
-                    <div style="text-align: center;">
-                        <button class="btn" style="min-width: 200px; font-size: 1.3rem; padding: 1.5rem 2rem;" onclick="selectStartingEye('left')">
-                            👁 Start with Left Eye
-                        </button>
-                        <p style="margin-top: 1rem; color: var(--text-gray);">Cover right eye first</p>
+                    
+                    <div style="display: flex; gap: 1rem; justify-content: center; margin: 1rem 0; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <button class="btn" style="min-width: 140px; font-size: 1rem; padding: 0.8rem 1rem;" onclick="selectStartingEye('right')">
+                                👁 Right Eye
+                            </button>
+                            <p style="margin-top: 0.3rem; color: var(--text-gray); font-size: 0.8rem;">Cover left eye</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <button class="btn" style="min-width: 140px; font-size: 1rem; padding: 0.8rem 1rem;" onclick="selectStartingEye('left')">
+                                👁 Left Eye
+                            </button>
+                            <p style="margin-top: 0.3rem; color: var(--text-gray); font-size: 0.8rem;">Cover right eye</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="navigation-buttons">
-                    <button class="btn btn-secondary" onclick="goToCalibration()">Back to Calibration</button>
+                    <button class="btn btn-secondary" onclick="goToCalibration()">Back</button>
                 </div>
             </div>
 
             <div class="test-card hidden" id="eyeTestScreen">
-                <h2 class="test-title">Visual Acuity Test</h2>
-                <div class="eye-indicator" id="eyeIndicator">Testing Right Eye</div>
-                
-                <div class="eye-cover-instruction" id="eyeCoverInstruction">
-                    <h3>👁 Cover Your Left Eye</h3>
-                    <p>Please cover your <strong>left eye</strong> completely with your hand or a piece of paper. Keep your <strong>right eye</strong> open and focused on the screen.</p>
-                </div>
-                
-                <div class="vision-chart">
-                    <div class="letter-display" id="letterDisplay" style="font-size: 120px;">E</div>
-                </div>
-                
-                <p class="test-subtitle">Identify the direction the letter E is pointing</p>
-                
-                <div class="direction-grid">
-                    <button class="direction-btn" onclick="selectDirection('up')">↑ Up</button>
-                    <button class="direction-btn" onclick="selectDirection('down')">↓ Down</button>
-                    <button class="direction-btn" onclick="selectDirection('left')">← Left</button>
-                    <button class="direction-btn" onclick="selectDirection('right')">→ Right</button>
-                </div>
-                
-                <div class="test-info">
-                    <div id="testProgress">Level: 1/8</div>
-                    <div id="currentEyeInfo">Testing: Right Eye</div>
+                <div class="test-content">
+                    <h2 class="test-title">Visual Acuity Test</h2>
+                    <div class="eye-indicator" id="eyeIndicator">Testing Right Eye</div>
+                    
+                    <div class="eye-cover-instruction" id="eyeCoverInstruction">
+                        <h3>👁 Cover Your Left Eye</h3>
+                        <p>Cover <strong>left eye</strong>, focus <strong>right eye</strong> on screen</p>
+                    </div>
+                    
+                    <div class="vision-chart">
+                        <div class="letter-display" id="letterDisplay" style="font-size: 90px;">E</div>
+                    </div>
+                    
+                    <p class="test-subtitle">Which direction is the E pointing?</p>
+                    
+                    <div class="direction-grid">
+                        <button class="direction-btn" onclick="selectDirection('up')">↑ Up</button>
+                        <button class="direction-btn" onclick="selectDirection('down')">↓ Down</button>
+                        <button class="direction-btn" onclick="selectDirection('left')">← Left</button>
+                        <button class="direction-btn" onclick="selectDirection('right')">→ Right</button>
+                    </div>
+                    
+                    <div class="test-info">
+                        <span id="testProgress">Level: 1/8</span> | <span id="currentEyeInfo">Testing: Right Eye</span>
+                    </div>
                 </div>
 
                 <div class="navigation-buttons">
-                    <button class="btn btn-secondary" onclick="goToEyeSelection()">Back to Eye Selection</button>
-                    <button class="btn btn-secondary" onclick="skipCurrentEye()">Skip This Eye</button>
+                    <button class="btn btn-secondary" onclick="goToEyeSelection()">Back</button>
+                    <button class="btn btn-secondary" onclick="skipCurrentEye()">Skip</button>
                 </div>
             </div>
 
@@ -1471,12 +1465,12 @@
             if (currentEye === 'right') {
                 eyeCoverInstruction.innerHTML = `
                     <h3>👁 Cover Your Left Eye</h3>
-                    <p>Please cover your <strong>left eye</strong> completely with your hand or a piece of paper. Keep your <strong>right eye</strong> open and focused on the screen.</p>
+                    <p>Cover <strong>left eye</strong>, focus <strong>right eye</strong> on screen</p>
                 `;
             } else {
                 eyeCoverInstruction.innerHTML = `
                     <h3>👁 Cover Your Right Eye</h3>
-                    <p>Please cover your <strong>right eye</strong> completely with your hand or a piece of paper. Keep your <strong>left eye</strong> open and focused on the screen.</p>
+                    <p>Cover <strong>right eye</strong>, focus <strong>left eye</strong> on screen</p>
                 `;
             }
             
@@ -1533,9 +1527,9 @@
             let nextEye = currentEye === 'right' ? 'left' : 'right';
             transitionTitle.textContent = `Prepare for ${nextEye.charAt(0).toUpperCase() + nextEye.slice(1)} Eye Test`;
             transitionDesc.innerHTML = nextEye === 'right'
-                ? `<p>Please cover your <strong>left eye</strong> and get ready to test your <strong>right eye</strong>.</p>`
-                : `<p>Please cover your <strong>right eye</strong> and get ready to test your <strong>left eye</strong>.</p>`;
-            transitionBtn.textContent = `Start ${nextEye.charAt(0).toUpperCase() + nextEye.slice(1)} Eye Test`;
+                ? `<p>Cover <strong>left eye</strong>, get ready to test <strong>right eye</strong></p>`
+                : `<p>Cover <strong>right eye</strong>, get ready to test <strong>left eye</strong></p>`;
+            transitionBtn.textContent = `Start ${nextEye.charAt(0).toUpperCase() + nextEye.slice(1)} Eye`;
             showScreen('eyeTransitionScreen');
         }
 
